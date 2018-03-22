@@ -1,4 +1,3 @@
-
 var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
@@ -6,7 +5,7 @@ var bodyParser = require('body-parser');
 var pessoas = [
 {
     id: 1,
-    name: 'Paulo'
+    name: 'Murillo'
 },
 {
     id: 2,
@@ -26,15 +25,15 @@ app.get('/pessoas', function(req, res) {
 });
 
 app.post('/pessoas', function(req, res) {
-    var productName = req.body.name;
+    var pessoaName = req.body.name;
     currentId++;
 
     pessoas.push({
         id: currentId,
-        name: productName
+        name: pessoaName
     });
 
-    res.send('Successfully created product!');
+    res.send('A pessoa foi cadastrada!');
 });
 
 app.put('/pessoas/:id', function(req, res) {
@@ -43,13 +42,13 @@ app.put('/pessoas/:id', function(req, res) {
 
     var found = false;
 
-    pessoas.forEach(function(product, index) {
-        if (!found && product.id === Number(id)) {
-            product.name = newName;
+    pessoas.forEach(function(pessoa, index) {
+        if (!found && pessoa.id === Number(id)) {
+            pessoa.name = newName;
         }
     });
 
-    res.send('Succesfully updated product!');
+    res.send('A pessoa foi atualizada!');
 });
 
 app.delete('/pessoas/:id', function(req, res) {
@@ -57,13 +56,13 @@ app.delete('/pessoas/:id', function(req, res) {
 
     var found = false;
 
-    pessoas.forEach(function(product, index) {
-        if (!found && product.id === Number(id)) {
+    pessoas.forEach(function(pessoa, index) {
+        if (!found && pessoa.id === Number(id)) {
             pessoas.splice(index, 1);
         }
     });
 
-    res.send('Successfully deleted product!');
+    res.send('A pessoa foi atualizada!');
 });
 
 app.listen(PORT, function() {
